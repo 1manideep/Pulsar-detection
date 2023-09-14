@@ -1,7 +1,7 @@
+#code to print out all filterbank files (with .fil extension) in a given directory
 import os 
 # Specify the directory path you want to search
-directory_path = '/data1/mpsurnis/GMGPPTS/filterbank'
-#directory of 16_ filterbank files in narmada
+directory_path = ''
 
 # Specify the file extension you want to select (e.g., '.txt')
 file_extension = '.fil'
