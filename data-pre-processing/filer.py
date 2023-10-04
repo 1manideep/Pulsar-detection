@@ -1,7 +1,7 @@
 import os
 import shutil
 
-# Define the root directory to start the search
+#Define the root directory to start the search
 root_directory = '/path/to/root/directory'  # Replace with your root directory path
 
 # Define the folder where you want to move the files
