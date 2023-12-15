@@ -1,0 +1,27 @@
+This Python script performs the following tasks:
+
+1. It imports necessary libraries: OpenCV for image processing, json for handling JSON data, and os for interacting with the operating system.
+
+2. It specifies a directory that contains image files.
+
+3. It lists all files in the specified directory.
+
+4. It initializes an empty list `labels` to store information about each image.
+
+5. It iterates over each file in the directory:
+
+   - Constructs the full file path.
+   
+   - Reads the image file using OpenCV's `imread` function.
+   
+   - Checks if the image is loaded properly. If the image is not loaded (which means the file is not a valid image file), it prints a message and skips to the next file.
+   
+   - Displays the image in a window for 1 second.
+   
+   - Asks the user to enter a label for the image.
+   
+   - Appends a dictionary to the `labels` list. The dictionary contains the image file name and the label entered by the user.
+
+6. After all images have been processed, it writes the `labels` list to a JSON file. Each object in the JSON file represents an image and contains the image file name and the label.
+
+In summary, this script is a tool for manually labeling images. It displays each image to the user, asks the user to enter a label, and stores the labels in a JSON file.
