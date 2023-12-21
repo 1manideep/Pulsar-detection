@@ -1,0 +1,39 @@
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+import json
+import sys
+sys.path.append('/data1/manideep2/code')
+from CCNN import load_pfd
+from process1 import plot_features
+
+if __name__ == "__main__":
+    # Specify the directory containing the PFD files
+    pfd_directory = os.getcwd()
+    
+    # Iterate over all files in the PFD directory
+    for filename in os.listdir(pfd_directory):
+        print(filename)
+        # Check if the file is a PFD file
+        if filename.endswith('.pfd'):
+            # Create a save directory for this file
+            save_directory = os.path.join(pfd_directory, f"{os.path.splitext(filename)[0]}_output")
+            os.makedirs(save_directory, exist_ok=True)
+
+            # Load PFD data and extract features
+            pfd_data = load_pfd(os.path.join(pfd_directory, filename))
+
+            # Save the data in a text file
+            if isinstance(pfd_data, np.ndarray):
+                np.savetxt(f'{save_directory}/{filename}_data.txt', pfd_data)
+
+            # Convert numpy arrays to list
+            data = pfd_data
+            data = {k: v.tolist() for k, v in data.items()}
+
+            # Save to file
+            with open(f'{save_directory}/{filename}_data.txt', 'w') as outfile:
+                json.dump(data, outfile)
+
+            # Generate and save plots as images
+            plot_features(pfd_data, save_directory, filename)
